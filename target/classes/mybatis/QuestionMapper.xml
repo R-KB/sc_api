@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.app.mapper.QuestionMapper">
+
+	<resultMap id="joinMap" type="Question" autoMapping="true">
+		<id property="id" column="id" />
+	</resultMap>
+
+	<sql id="Question">
+		SELECT question.id, question.genre_id, question.img, question.description,
+		question.answer, question.is_delete, question.created, question.updated
+		FROM question
+	</sql>
+	
+	<select id="selectQuestion" resultMap="joinMap">
+		<include refid="Question" />
+	</select>
+	
+	<select id="selectQuestionById" resultMap="joinMap">
+		<include refid="Question" />
+		WHERE id = #{id}
+	</select>
+	
+	<select id="selectQuestionByGenre" resultMap="joinMap">
+		<include refid="Question" />
+		WHERE genre_id = #{genre_id}
+	</select>
+	
+	<insert id="insert" parameterType="Question">
+		INSERT INTO question(genre_id, img, description, answer)
+		VALUES(#{genre_id}, #{img}, #{description}, #{answer})
+	</insert>
+	
+	<update id="update" parameterType="Question">
+		UPDATE question set genre_id = #{genre_id}, img = #{img},
+		description = #{description}, answer = #{answer}
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="Question">
+		DELETE FROM question WHERE id = #{id}
+	</delete>
+	
+	
+
+
+</mapper>

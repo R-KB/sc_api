@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.app.mapper.GenreMapper">
+	
+	<resultMap id="joinMap" type="Genre" autoMapping="true">
+		<id property="id" column="id" />
+	</resultMap>
+
+	<select id="selectGenre" resultMap="joinMap">
+		SELECT id, name, created, updated FROM genre
+	</select>
+	
+	<select id="selectGenreById" resultMap="joinMap">
+		SELECT id, name, created, updated FROM genre WHERE id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="Genre">
+		INSERT INTO genre(name) VALUES (#{name})
+	</insert>
+	
+	<update id="update" parameterType="Genre">
+		UPDATE genre set name = #{name} WHERE id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="Genre">
+		DELETE FROM genre WHERE id = #{id}
+	</delete>
+
+
+</mapper>
