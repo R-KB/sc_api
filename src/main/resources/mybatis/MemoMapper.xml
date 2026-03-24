@@ -19,15 +19,15 @@
 	
 	<select id="selectMemoByQuestion" resultMap="joinMap">
 		SELECT id, q_id, memo, created, updated FROM memo
-		WHERE q_id = #{q_id}
+		WHERE q_id = #{qId}
 	</select>
 	
 	<insert id="insert" parameterType="Memo">
-		INSERT INTO memo(q_id, memo) VALUES (#{q_id}, #{memo})
+		INSERT INTO memo(q_id, memo) VALUES (#{qId}, #{memo})
 	</insert>
 	
 	<update id="update" parameterType="Memo">
-		UPDATE memo set q_id = #{q_id}, memo = #{memo} WHERE id = #{id}
+		UPDATE memo set q_id = #{qId}, memo = #{memo} WHERE id = #{id}
 	</update>
 	
 	<delete id="delete" parameterType="Memo">

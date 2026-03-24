@@ -41,7 +41,7 @@ public class QuestionApiController {
 		return new ResponseEntity<>(question, status);
 	}
 	
-	@GetMapping("/{genreId}")
+	@GetMapping("/g/{genreId}")
 	public ResponseEntity<List<Question>> getQuestionByGenre(@PathVariable Integer genreId) {
 		List<Question> questions = service.getQuestionByGenre(genreId);
 		HttpStatus status = questions == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;

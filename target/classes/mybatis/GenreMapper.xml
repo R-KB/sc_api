@@ -21,7 +21,7 @@
 	</insert>
 	
 	<update id="update" parameterType="Genre">
-		UPDATE genre set name = #{name} WHERE id = #{id}
+		UPDATE genre SET name = #{name} WHERE id = #{id}
 	</update>
 	
 	<delete id="delete" parameterType="Genre">

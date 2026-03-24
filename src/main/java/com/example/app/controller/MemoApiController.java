@@ -41,7 +41,7 @@ public class MemoApiController {
 		return new ResponseEntity<>(memo, status);
 	}
 	
-	@GetMapping("/{qId}")
+	@GetMapping("/q/{qId}")
 	public ResponseEntity<List<Memo>> getMemoByQuestion(@PathVariable Integer qId) {
 		List<Memo> memos = service.getMemoByQuestion(qId);
 		HttpStatus status = memos == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;

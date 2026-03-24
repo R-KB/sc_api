@@ -25,16 +25,16 @@
 	
 	<select id="selectQuestionByGenre" resultMap="joinMap">
 		<include refid="Question" />
-		WHERE genre_id = #{genre_id}
+		WHERE genre_id = #{genreId}
 	</select>
 	
 	<insert id="insert" parameterType="Question">
 		INSERT INTO question(genre_id, img, description, answer)
-		VALUES(#{genre_id}, #{img}, #{description}, #{answer})
+		VALUES(#{genreId}, #{img}, #{description}, #{answer})
 	</insert>
 	
 	<update id="update" parameterType="Question">
-		UPDATE question set genre_id = #{genre_id}, img = #{img},
+		UPDATE question set genre_id = #{genreId}, img = #{img},
 		description = #{description}, answer = #{answer}
 		WHERE id = #{id}
 	</update>
